@@ -13,4 +13,10 @@ def get_tasks(request):
     return render(request, "tasks.html", context={"tasks": tasks})
 
 
+def task_detail_view(request, id):
+    task = get_object_or_404(Task, id)
+    return render(request, 'task_detail.html', context={'task': task})
+
+
+
 
