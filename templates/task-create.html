@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .create-task {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .create-task h2 {
+            color: #333;
+        }
+        .create-task form {
+            margin-top: 20px;
+        }
+        .create-task label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .create-task input[type="text"], .create-task select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .create-task button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .create-task button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="create-task">
+        <h2>Create New Task</h2>
+        <form action="submit_task.php" method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>
