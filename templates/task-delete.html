@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Task</title>
+    <title>Delete Task</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,48 +27,56 @@
             margin-bottom: 20px;
         }
 
+        p {
+            margin-bottom: 30px;
+            color: #555;
+            text-align: center;
+        }
+
         form {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"], textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-        button {
+        button, a {
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
             cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
             transition: background-color 0.3s ease;
         }
 
+        button {
+            background-color: #dc3545;
+            color: #fff;
+            margin-right: 10px;
+        }
+
         button:hover {
+            background-color: #c82333;
+        }
+
+        a {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        a:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Edit Task</h1>
+        <h1>Delete Task</h1>
+        <p>Are you sure you want to delete "<strong>{{ task.name }}</strong>"?</p>
         <form method="post">
             {% csrf_token %}
-            <label for="id_name">Name:</label>
-            {{ form.name }}
-            <label for="id_description">Description:</label>
-            {{ form.status }}
-            <button type="submit">Save Changes</button>
+            <button type="submit">Delete</button>
+            <a href="{% url 'task-list' %}">Cancel</a>
         </form>
     </div>
 </body>
